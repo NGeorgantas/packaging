@@ -4,15 +4,21 @@ from typing import TextIO
 
 
 def load_text(input_file: TextIO) -> str:
-    """
-    Load text from a text file and return as a string.
+    """Load text from a text file and return as a string.
 
-    Args:
-        input_file: Accepts a .txt file.
+    Parameters
+    ----------
+    input_file : str
+        Path to text file.
 
-    Returns:
-       A string of text as it is read from the source.
+    Returns
+    -------
+    str
+        Text file contents.
 
+    Examples
+    --------
+    >>> load_text("text.txt")
     """
 
     with open(input_file, "r") as file:
@@ -22,15 +28,23 @@ def load_text(input_file: TextIO) -> str:
 
 
 def clean_text(text: str) -> str:
+    """Lowercase and remove punctuation from a string.
+
+    Parameters
+    ----------
+    text : str
+        Text to clean.
+
+    Returns
+    -------
+    str
+        Cleaned text.
+
+    Examples
+    --------
+    >>> clean_text("Early optimization is the root of all evil!")
+    'early optimization is the root of all evil'
     """
-        Lowercase and remove punctuation from a string.
-
-        Args:
-            text: Accepts a string
-
-        Returns:
-            A string without punctuation and all letters lowercase
-   """
 
     text = text.lower()
     for p in punctuation:
@@ -39,16 +53,24 @@ def clean_text(text: str) -> str:
 
 
 def count_words(input_file):
-    """
-    Gets and prints the spreadsheet's header columns
+    """Count words in a text file.
 
-    :param file_loc: The file location of the spreadsheet
-    :type file_loc: str
-    :param print_cols: A flag used to print the columns to the console
-        (default is False)
-    :type print_cols: bool
-    :returns: a list of strings representing the header columns
-    :rtype: list
+    Words are made lowercase and punctuation is removed 
+    before counting.
+
+    Parameters
+    ----------
+    input_file : str
+        Path to text file.
+
+    Returns
+    -------
+    collections.Counter
+        dict-like object where keys are words and values are counts.
+
+    Examples
+    --------
+    >>> count_words("text.txt")
     """
 
     text = load_text(input_file)
