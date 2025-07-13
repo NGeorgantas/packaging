@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from collections import Counter
 
 
 def plot_words(word_counts, n=10):
@@ -23,6 +24,8 @@ def plot_words(word_counts, n=10):
     >>> counts = count_words("text.txt")
     >>> plot_words(counts)
     """
+    if not isinstance(word_counts, Counter):
+        raise TypeError("'word_counts' should be of type 'Counter'")
 
     top_n_words = word_counts.most_common(n)
     word, count = zip(*top_n_words)
